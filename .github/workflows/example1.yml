@@ -1,0 +1,11 @@
+name: test1
+on: [push]
+jobs:
+  job_build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: git submodule update --init
+      - run: cmake -S . -B build
+      - run: cmake --build build -j
+      - run: ./build/address_book_tests
