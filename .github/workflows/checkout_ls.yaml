@@ -1,4 +1,4 @@
-name: checkout and ls
+name: build pipeline
 on: [push]
 jobs: 
   checkout-and-ls:
