@@ -15,11 +15,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Install GCC
-        run: sudo apt-get update && sudo apt-get install -y gcc
+      - name: Setup CMake
+        uses: lukka/get-cmake@v4
 
-      - name: Compile C program
-        run: gcc address_book_tests.c -o address_book_tests
+      - name: Create Build Directory
+        run: mkdir build
+
+      - name: Configure CMake
+        run: cmake -S . -B build
+
+      - name: Build
+        run: cmake --build build
 
       - name: Run compiled program
-        run: .address_book_tests
+        run: ./build/address_book_tests
