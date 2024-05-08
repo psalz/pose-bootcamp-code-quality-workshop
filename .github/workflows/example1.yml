@@ -1,0 +1,7 @@
+name: test1
+run-name: test1 name
+on: [push]
+jobs:
+  job_build:
+    steps:
+      run: cmake --build build -j
