@@ -25,3 +25,15 @@ TEST_CASE("entry names are are between 1 and 100 characters long") {
 	CHECK_THROWS(ab.add_entry(""));
 	CHECK_THROWS(ab.add_entry("11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"));
 }
+
+TEST_CASE("entries are sorted alphabetically") {
+	address_book ab;
+	ab.add_entry("Jane Doe");
+	ab.add_entry("Zoe Doe");
+	ab.add_entry("Anne Doe");
+	auto entries = ab.get_entries();
+
+	CHECK(entries[0] == "Anne Doe");
+	CHECK(entries[1] == "Jane Doe");
+	CHECK(entries[2] == "Zoe Doe");
+}
