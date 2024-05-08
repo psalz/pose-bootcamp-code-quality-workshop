@@ -16,4 +16,6 @@ TEST_CASE("entries can be added") {
 	address_book ab;
 	ab.add_entry("buh");
 	CHECK(ab.has_entry("buh"));
+	CHECK(ab.has_entry("BUH"));
+	CHECK_THROWS(ab.add_entry(""));
 }
