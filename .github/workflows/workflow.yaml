@@ -3,9 +3,14 @@ on:
   push:
   pull_request:
 jobs:
-
   bootcamp_adress_book:
     runs-on: ubuntu-latest
     steps:
+      - name: Build 
+        run: cmake --build build
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          clean: true
       - name: Test Address Book
         run: address_book_tests
