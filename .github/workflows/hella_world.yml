@@ -1,4 +1,4 @@
-name: Hello World Workflow
+name: C Program Workflow
 
 on:
   push:
@@ -9,8 +9,8 @@ on:
       - main
 
 jobs:
-  greet:
+  compile_and_run:
     runs-on: ubuntu-latest
     steps:
-      - name: Print Hello World
-        run: echo "Hello World"
+      - name: Run compiled program
+        run: ./build/address_book_tests
