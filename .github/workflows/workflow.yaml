@@ -6,13 +6,13 @@ jobs:
   bootcamp_adress_book:
     runs-on: ubuntu-latest
     steps:
-      - name: Build 
-        run: |
-          cmake -B build
-          cmake --build build
       - name: Checkout
         uses: actions/checkout@v4
         with:
           clean: true
+      - name: Build 
+        run: |
+          cmake -B build
+          cmake --build build
       - name: Test Address Book
-        run: address_book_tests
+        run: build/address_book_tests
