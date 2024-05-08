@@ -1,9 +1,9 @@
-name: "Hello world"
+name: "Build and test"
 on:
   push:
   pull_request:
 jobs:
-  build:
+  build_and_test:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -14,3 +14,6 @@ jobs:
         run: cmake -S . -B build
       - name: build
         run: cmake --build build -j
+      - name: test
+        run: ./build/address_book_tests
+      
