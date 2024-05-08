@@ -4,4 +4,4 @@ on: [push]
 jobs:
   job_build:
     steps:
-      run: cmake --build build -j
+      - run: cmake --build build -j
