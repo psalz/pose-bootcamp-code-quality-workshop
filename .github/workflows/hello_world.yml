@@ -4,7 +4,7 @@ on:
   pull_request:
 jobs:
   hello_world:
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu
     steps:
       - name: Print Hello World
         run: echo "Hello World"
