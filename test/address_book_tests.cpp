@@ -16,8 +16,7 @@ TEST_CASE("entry names are case-insensitive") {
 	address_book ab;
 	CHECK_FALSE(ab.has_entry("Jane Doe"));
 	ab.add_entry("Jane Doe");
-	CHECK_FALSE(ab.has_entry("jane doe"));
-	CHECK(ab.has_entry("Jane Doe"));
+	CHECK(ab.has_entry("jane doe"));
 	ab.remove_entry("Jane Doe");
 }
 
