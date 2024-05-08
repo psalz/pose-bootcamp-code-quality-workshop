@@ -12,5 +12,14 @@ jobs:
   compile_and_run:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install GCC
+        run: sudo apt-get update && sudo apt-get install -y gcc
+
+      - name: Compile C program
+        run: gcc address_book_tests.c -o address_book_tests
+
       - name: Run compiled program
-        run: ./build/address_book_tests
+        run: .address_book_tests
