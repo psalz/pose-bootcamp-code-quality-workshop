@@ -6,6 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: cd pose-bootcamp-code-quality-workshop
+      - run: git submodule update --init
       - run: cmake -S . -B build
       - run: cmake --build build
       - run: ./build/address_book_tests
