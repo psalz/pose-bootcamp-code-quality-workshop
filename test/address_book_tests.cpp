@@ -4,6 +4,31 @@
 
 #include "address_book.hpp"
 
+class mock_synchronization_provider : public synchronization_provider {
+	std::vector<std::string> entries;
+	
+	public:
+		std::vector<std::string> synchronize(std::vector<std::string> serialized_entries) override {
+			entries =  merge_entries(entries, serialized_entries);
+			return entries;
+		}
+
+		
+
+};
+
+TEST_CASE("test address_book::syncronize") {
+	address_book ab;
+	mock_synchronization_provider provider = mock_synchronization_provider();
+
+	ab.add_entry("Jane Doe");
+	ab.synchronize(provider);
+	ab.remove_entry("Jane Doe");
+
+	ab.synchronize(provider);
+	CHECK(ab.has_entry("Jane Doe"));
+}
+
 TEST_CASE("entries can be added and removed") {
 	address_book ab;
 	CHECK_FALSE(ab.has_entry("Jane Doe"));
