@@ -20,7 +20,7 @@ TEST_CASE("names must be between 1 and 100 characters long") {
 	std::string str_empty = "";
 	CHECK(str_empty.length() == 0);
 	CHECK_THROWS(ab.add_entry(str_empty));
-	std::string str_101 = "AAAAAaaaaa"
+	std::string str_too_long = "AAAAAaaaaa"
 						  "AAAAAaaaaa"
 						  "AAAAAaaaaa"
 						  "AAAAAaaaaa"
@@ -30,6 +30,15 @@ TEST_CASE("names must be between 1 and 100 characters long") {
 						  "AAAAAaaaaa"
 						  "AAAAAaaaaa"
 						  "AAAAAaaaaaB";
-	CHECK(str_101.length() == 101);
-	CHECK_THROWS(ab.add_entry(str_101));
+	CHECK(str_too_long.length() == 101);
+	CHECK_THROWS(ab.add_entry(str_too_long));
+}
+
+TEST_CASE("names are case insensitive") {
+	address_book ab;
+	CHECK_FALSE(ab.has_entry("Jane"));
+	ab.add_entry("JANE");
+	CHECK(ab.has_entry("Jane"));
+	ab.remove_entry("Jane");
+	CHECK_FALSE(ab.has_entry("Jane"));
 }
