@@ -1,7 +1,9 @@
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/matchers/catch_matchers_string.hpp>
+#include <system_error>
 
 #include "address_book.hpp"
+#include "synchronization.hpp"
 
 TEST_CASE("entries can be added and removed") {
 	address_book ab;
@@ -37,4 +39,18 @@ TEST_CASE("entries are sorted alphabetically") {
 	CHECK(entries[0] == "Anne Doe");
 	CHECK(entries[1] == "Jane Doe");
 	CHECK(entries[2] == "Zoe Doe");
+}
+
+TEST_CASE("check file based syncronisation provider") {
+	address_book ab;
+	file_synchronization_provider f_provider{"db"};
+	ab.synchronize(f_provider);
+	CHECK_FALSE(ab.has_entry("jane"));
+	ab.add_entry("jane");
+	ab.synchronize(f_provider);
+	CHECK(ab.has_entry("jane"));
+	ab.remove_entry("jane");
+	CHECK_FALSE(ab.has_entry("jane"));
+	ab.synchronize(f_provider);
+	CHECK(ab.has_entry("jane"));
 }
