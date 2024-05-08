@@ -8,6 +8,8 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v4
+      - name: init submodule
+        run: git submodule update --init
       - name: configure
         run: cmake -S . -B build
       - name: build
