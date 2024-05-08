@@ -30,10 +30,10 @@ TEST_CASE("names are case-insensitive") {
 	CHECK(ab.has_entry("kleiner Name"));
 }
 
-TEST_CASE("names must be between 1 and 100 characters long") {
+TEST_CASE("Attempting to add an entry with a name violating these restrictions throws an exception") {
 	address_book ab;
-	CHECK_THROWS(ab.add_entry("asdflöasdfkjashfoihasdoifnskfndjabsdfioasofdnasölfdknsödfhsoaifhnaläskdfnjksdfoiashüfdopinsalökfdnsaidfihjüaspofnkasöfnüaishdfanfdöasdflöasdfkjashfoihasdoifnskfndjabsdfioasofdnasölfdknsödfhsoaifhnaläskdfnjksdfoiashüfdopinsalökfdnsaidfihjüaspofnkasöfnüaishdfanfdö"));
-	CHECK_THROWS(ab.add_entry(""));
+	CHECK_THROWS_WITH(ab.add_entry("asdflöasdfkjashfoihasdoifnskfndjabsdfioasofdnasölfdknsödfhsoaifhnaläskdfnjksdfoiashüfdopinsalökfdnsaidfihjüaspofnkasöfnüaishdfanfdöasdflöasdfkjashfoihasdoifnskfndjabsdfioasofdnasölfdknsödfhsoaifhnaläskdfnjksdfoiashüfdopinsalökfdnsaidfihjüaspofnkasöfnüaishdfanfdö"), "Name too long");
+	CHECK_THROWS_WITH(ab.add_entry(""), "Name may not be empty");
 }
 
 TEST_CASE("get_entries returns all entries ordered alphabetically (capital letter)") {
