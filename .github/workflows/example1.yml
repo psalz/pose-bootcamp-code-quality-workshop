@@ -1,6 +1,6 @@
 name: test1
 run-name: test1 name
-on: [push]
+on: [push, pull]
 jobs:
   job_build:
     runs-on: ubuntu-latest
