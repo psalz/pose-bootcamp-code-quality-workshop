@@ -18,4 +18,4 @@ TEST_CASE("entries can be added") {
 	CHECK(ab.has_entry("buh"));
 	CHECK(ab.has_entry("BUH"));
 	CHECK_THROWS(ab.add_entry(""));
-	CHECK_THROWS(a.add_entry(""));}
+	CHECK(ab.list_entries());}
