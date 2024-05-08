@@ -15,5 +15,5 @@ TEST_CASE("entries can be added and removed") {
 TEST_CASE("entries can be added") {
 	address_book ab;
 	ab.add_entry("buh");
-	CHECK_TRUE(ab.has_entry("buh"));
+	CHECK(ab.has_entry("buh"));
 }
