@@ -10,6 +10,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           clean: true
+      - name: Init
+        run: git submodule update --init
       - name: Build 
         run: |
           cmake -B build
