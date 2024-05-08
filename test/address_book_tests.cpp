@@ -13,7 +13,7 @@ TEST_CASE("entries can be added and removed") {
 	CHECK_FALSE(ab.has_entry("Jane Doe"));
 }
 
-TEST_CASE("entries are identified by their names") {
+TEST_CASE("entries are identified by their names -> no second entry with same name can be added") {
 	address_book ab;
 	ab.add_entry("name1");
 	CHECK(ab.has_entry("name1"));
@@ -51,11 +51,11 @@ TEST_CASE("get_entries returns all entries ordered alphabetically (capital lette
 
 TEST_CASE("Names returned by the address book have the first letter of each word capitalized") {
 	address_book ab;
-	ab.add_entry("a");
+	ab.add_entry("jane m doe");
 
 	auto entries = ab.get_entries();
 	REQUIRE(entries.size() == 1);
-	CHECK(entries[0] == "A");
+	CHECK(entries[0] == "Jane M Doe");
 }
 
 TEST_CASE("A phone number and birthday can be set for each entry.") {
