@@ -3,5 +3,7 @@ run-name: test1 name
 on: [push]
 jobs:
   job_build:
+    runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - run: cmake --build build -j
