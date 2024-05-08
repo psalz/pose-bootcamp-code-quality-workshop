@@ -1,0 +1,11 @@
+name: Bootcamp Workflow
+on: 
+  push:
+  pull_request:
+jobs:
+
+  bootcamp_adress_book:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test Address Book
+        run: address_book_tests
