@@ -7,7 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Build 
-        run: cmake --build build
+        run: 
+          - cmake -S . -B
+          - cmake --build build
       - name: Checkout
         uses: actions/checkout@v4
         with:
