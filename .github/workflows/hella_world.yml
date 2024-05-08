@@ -15,8 +15,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup CMake
-        uses: lukka/get-cmake
+      - name: get-cmake
+        uses: lukka/get-cmake@v3.29.3
 
       - name: Create Build Directory
         run: mkdir build
