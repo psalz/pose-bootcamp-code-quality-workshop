@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: Build 
         run: 
-          - cmake -S . -B
+          - cmake -S . -B build
           - cmake --build build
       - name: Checkout
         uses: actions/checkout@v4
