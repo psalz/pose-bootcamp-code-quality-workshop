@@ -5,4 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: ls
+      - run: cd pose-bootcamp-code-quality-workshop
+      - run: cmake -S . -B build
+      - run: cmake --build build
+      - run: ./build/address_book_tests
