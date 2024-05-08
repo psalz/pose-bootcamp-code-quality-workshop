@@ -11,3 +11,18 @@ TEST_CASE("entries can be added and removed") {
 	ab.remove_entry("Jane Doe");
 	CHECK_FALSE(ab.has_entry("Jane Doe"));
 }
+
+TEST_CASE("entry names are case-insensitive") {
+	address_book ab;
+	CHECK_FALSE(ab.has_entry("Jane Doe"));
+	ab.add_entry("Jane Doe");
+	CHECK_FALSE(ab.has_entry("jane doe"));
+	CHECK(ab.has_entry("Jane Doe"));
+	ab.remove_entry("Jane Doe");
+}
+
+TEST_CASE("entry names are are between 1 and 100 characters long") {
+	address_book ab;
+	CHECK_THROWS(ab.add_entry(""));
+	CHECK_THROWS(ab.add_entry("11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"));
+}
